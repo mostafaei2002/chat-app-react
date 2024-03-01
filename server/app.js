@@ -67,8 +67,12 @@ wss.on("connection", (ws) => {
 
   ws.on("close", () => {
     console.log("User closing connection");
-    users.splice(index, 1);
-    broadcast({ type: "USERS_LIST", users }, ws);
-    console.log(users);
+    if (typeof index === "number" && index >= 0 && index < users.length) {
+      users.splice(index, 1);
+      broadcast({ type: "USERS_LIST", users }, ws);
+      console.log(users);
+    } else {
+      console.log("Invalid index:", index);
+    }
   });
 });
