@@ -7,8 +7,7 @@ function Users() {
 
   return (
     <ul className="row-span-2 bg-slate-100 border-r-2 border-r-slate-200 divide-y divide-slate-200">
-      {users.length &&
-        users.map((user) => <User key={user.name} user={user} />)}
+      {users.length && users.map((user) => <User key={user.id} user={user} />)}
     </ul>
   );
 }

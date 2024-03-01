@@ -7,7 +7,7 @@ function Messages() {
   return (
     <ul className="bg-slate-100 flex flex-col gap-1 px-4 py-2">
       {messages.map((message) => (
-        <Message key={message.message} message={message} />
+        <Message key={message.id} message={message} />
       ))}
     </ul>
   );

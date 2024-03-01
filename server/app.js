@@ -49,6 +49,7 @@ wss.on("connection", (ws) => {
         broadcast(
           {
             type: "ADD_MESSAGE",
+            id: new Date().toISOString(),
             message: data.message,
             author: data.author,
           },
