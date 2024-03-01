@@ -1,7 +1,7 @@
 function Message({ message }) {
   return (
     <li>
-      {message.user}: {message.message}
+      {message.author}: {message.message}
     </li>
   );
 }
