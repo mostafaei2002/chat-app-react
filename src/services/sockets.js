@@ -1,18 +1,10 @@
+import { addMessage } from "../store/messagesSlice";
 import { updateUsers } from "../store/usersSlice";
 
-const SERVER = "ws://localhost:8989";
+import { SERVER } from "../constants";
 
-function setupSocket(dispatch, username) {
+function setupSocket(dispatch) {
   const socket = new WebSocket(SERVER);
-
-  socket.onopen = () => {
-    socket.send(
-      JSON.stringify({
-        type: "ADD_USER",
-        name: username,
-      })
-    );
-  };
 
   socket.onmessage = (event) => {
     const data = JSON.parse(event.data);
@@ -20,6 +12,8 @@ function setupSocket(dispatch, username) {
 
     switch (data.type) {
       case "ADD_MESSAGE": {
+        console.log(data);
+        dispatch(addMessage(data));
         break;
       }
       case "USERS_LIST": {

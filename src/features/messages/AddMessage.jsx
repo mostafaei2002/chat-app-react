@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { addMessage } from "../../store/messagesSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function AddMessage() {
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();
-  const user = "Sina";
+  const username = useSelector((state) => state.users.currentUser);
 
   function handleSubmit(e) {
     e.preventDefault();
     console.log(message);
-    dispatch(addMessage({ author: user, message }));
+    dispatch(addMessage({ author: username, message }));
     setMessage("");
   }
 

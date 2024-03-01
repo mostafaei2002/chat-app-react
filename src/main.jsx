@@ -7,10 +7,7 @@ import { Provider } from "react-redux";
 import store from "./store/store.js";
 import setupSocket from "./services/sockets.js";
 
-import { generateName } from "./utils/name.js";
-
-const username = generateName();
-const socket = setupSocket(store.dispatch, username);
+const socket = setupSocket(store.dispatch);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
