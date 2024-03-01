@@ -1,26 +1,18 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addUserApi } from "../services/api";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   users: [],
 };
 
-export const addUser = createAsyncThunk("users/addUser", async (name) => {
-  console.log(name);
-  const response = await addUserApi(name);
-  return response;
-});
-
 export const usersSlice = createSlice({
   name: "users",
   initialState,
-  extraReducers: (builder) => {
-    builder.addCase(addUser.fulfilled, (state, action) => {
-      console.log(action);
-      state.users = action.payload.users;
-    });
+  reducers: {
+    updateUsers: (state, action) => {
+      state.users = action.payload;
+    },
   },
 });
 
-// export const {} = usersSlice.actions;
+export const { updateUsers } = usersSlice.actions;
 export default usersSlice.reducer;

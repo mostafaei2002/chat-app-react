@@ -25,8 +25,9 @@ wss.on("connection", (ws) => {
       case "ADD_USER": {
         console.log("Got ADD_USER event");
         index = users.length;
-
         users.push({ name: data.name, id: index + 1 });
+
+        console.log(users);
         ws.send(
           JSON.stringify({
             type: "USERS_LIST",
@@ -67,5 +68,6 @@ wss.on("connection", (ws) => {
     console.log("User closing connection");
     users.splice(index, 1);
     broadcast({ type: "USERS_LIST", users }, ws);
+    console.log(users);
   });
 });
