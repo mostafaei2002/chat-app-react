@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addMessage } from "../../store/chatSlice";
+import { addMessage } from "../../store/messagesSlice";
 import { useDispatch } from "react-redux";
 
 function AddMessage() {
